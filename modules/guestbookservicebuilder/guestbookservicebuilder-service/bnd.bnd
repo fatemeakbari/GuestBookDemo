@@ -1,0 +1,7 @@
+Bundle-Name: guestbookservicebuilder-service
+Bundle-SymbolicName: com.proliferay.myportlet.service
+Bundle-Version: 1.0.0
+Liferay-Require-SchemaVersion: 1.0.0
+Liferay-Service: true
+Export-Package: com.proliferay.myportlet.search
+-dsannotations-options: inherit

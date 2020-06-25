@@ -1,0 +1,10 @@
+Bundle-Name: guestbookservicebuilder-api
+Bundle-SymbolicName: com.proliferay.myportlet.api
+Bundle-Version: 1.0.0
+Export-Package:\
+	com.proliferay.myportlet.exception,\
+	com.proliferay.myportlet.model,\
+	com.proliferay.myportlet.service,\
+	com.proliferay.myportlet.service.persistence
+-check: EXPORTS
+-includeresource: META-INF/service.xml=../guestbookservicebuilder-service/service.xml

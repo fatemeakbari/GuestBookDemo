@@ -1,0 +1,91 @@
+<?xml version="1.0"?>
+<!DOCTYPE service-builder PUBLIC "-//Liferay//DTD Service Builder 7.2.0//EN" "http://www.liferay.com/dtd/liferay-service-builder_7_2_0.dtd">
+
+<service-builder dependency-injector="ds" package-path="com.proliferay.myportlet">
+	<namespace>GB</namespace>
+	<!--<entity data-source="sampleDataSource" local-service="true" name="Foo" remote-service="false" session-factory="sampleSessionFactory" table="foo" tx-manager="sampleTransactionManager uuid="true"">-->
+	<entity local-service="true" name="GuestBook" remote-service="true" uuid="true">
+
+		<!-- PK fields -->
+
+		<column name="guestBookId" primary="true" type="long" />
+
+		<!-- Group instance -->
+
+		<column name="groupId" type="long" />
+
+
+		<!-- Status fields -->
+
+		<column name="status" type="int" />
+		<column name="statusByUserId" type="long" />
+		<column name="statusByUserName" type="String" />
+		<column name="statusDate" type="Date" />
+
+
+		<!-- Audit fields -->
+
+		<column name="companyId" type="long" />
+		<column name="userId" type="long" />
+		<column name="userName" type="String" />
+		<column name="createDate" type="Date" />
+		<column name="modifiedDate" type="Date" />
+
+		<!-- Other fields -->
+
+		<column name="name" type="String" />
+
+		<!-- Finder methods -->
+
+		<finder name="GroupId" return-type="Collection">
+			<finder-column name="groupId" />
+		</finder>
+
+	</entity>
+
+	<entity name="Entry" local-service="true" uuid="true">
+		<column name="entryId" type="long" primary="true"/>
+
+		<!-- Group instance -->
+
+		<column name="groupId" type="long" />
+
+		<!-- Audit fields -->
+
+		<column name="companyId" type="long" />
+		<column name="userId" type="long" />
+		<column name="userName" type="String" />
+		<column name="createDate" type="Date" />
+		<column name="modifiedDate" type="Date" />
+
+		<!-- Status Fields -->
+		<column name="status" type="int" />
+		<column name="statusByUserId" type="long" />
+		<column name="statusByUserName" type="String" />
+		<column name="statusDate" type="Date" />
+
+		<column name="name" type="String" />
+		<column name="email" type="String" />
+		<column name="message" type="String" />
+		<column name="guestBookId" type="long" />
+
+
+        <order>
+            <order-column name="createDate" />
+        </order>
+
+        <finder name="G_G" return-type="Collection">
+
+			<finder-column name="groupId" />
+			<finder-column name="guestBookId" />
+		</finder>
+	</entity>
+
+
+	<exceptions>
+		<exception>EntryEmail</exception>
+		<exception>EntryMessage</exception>
+		<exception>EntryName</exception>
+		<exception>GuestBookName</exception>
+	</exceptions>
+</service-builder>
