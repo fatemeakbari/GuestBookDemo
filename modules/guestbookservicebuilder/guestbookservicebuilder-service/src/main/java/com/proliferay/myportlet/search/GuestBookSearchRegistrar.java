@@ -1,10 +1,6 @@
 package com.proliferay.myportlet.search;
 
 
-import com.liferay.portal.kernel.search.Field;
-import com.liferay.portal.search.spi.model.index.contributor.ModelIndexerWriterContributor;
-import com.liferay.portal.search.spi.model.registrar.ModelSearchRegistrarHelper;
-import com.liferay.portal.search.spi.model.result.contributor.ModelSummaryContributor;
 import com.proliferay.myportlet.model.GuestBook;
 import org.osgi.framework.BundleContext;
 import org.osgi.framework.ServiceRegistration;
@@ -13,8 +9,15 @@ import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.Deactivate;
 import org.osgi.service.component.annotations.Reference;
 
+import com.liferay.portal.kernel.search.Field;
+
+import com.liferay.portal.search.spi.model.index.contributor.ModelIndexerWriterContributor;
+import com.liferay.portal.search.spi.model.registrar.ModelSearchRegistrarHelper;
+import com.liferay.portal.search.spi.model.result.contributor.ModelSummaryContributor;
+
+
 @Component(immediate = true)
-public class GuestBookSearchRegister {
+public class GuestBookSearchRegistrar {
 
     @Activate
     protected void activate(BundleContext bundleContext) {
