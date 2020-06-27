@@ -74,6 +74,7 @@ public interface GuestBookLocalService
 	@Indexable(type = IndexableType.REINDEX)
 	public GuestBook addGuestBook(GuestBook guestBook);
 
+	@Indexable(type = IndexableType.REINDEX)
 	public GuestBook addGuestBook(String name, ServiceContext serviceContext)
 		throws PortalException;
 
@@ -105,6 +106,7 @@ public interface GuestBookLocalService
 	@Indexable(type = IndexableType.DELETE)
 	public GuestBook deleteGuestBook(long guestBookId) throws PortalException;
 
+	@Indexable(type = IndexableType.DELETE)
 	public GuestBook deleteGuestBook(
 			Long guestBookId, ServiceContext serviceContext)
 		throws PortalException;
@@ -312,6 +314,7 @@ public interface GuestBookLocalService
 	@Indexable(type = IndexableType.REINDEX)
 	public GuestBook updateGuestBook(GuestBook guestBook);
 
+	@Indexable(type = IndexableType.REINDEX)
 	public GuestBook updateGuestBook(
 			Long guestBookId, String name, ServiceContext serviceContext)
 		throws PortalException;

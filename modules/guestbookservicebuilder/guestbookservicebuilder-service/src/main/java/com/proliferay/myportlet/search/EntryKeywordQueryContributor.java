@@ -24,6 +24,7 @@ public class EntryKeywordQueryContributor implements KeywordQueryContributor {
         SearchContext searchContext =
                 keywordQueryContributorHelper.getSearchContext();
 
+
         queryHelper.addSearchLocalizedTerm(
                 booleanQuery, searchContext, Field.TITLE, false);
         queryHelper.addSearchLocalizedTerm(

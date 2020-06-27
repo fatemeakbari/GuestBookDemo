@@ -8,7 +8,20 @@
 <%
     long guestBookId = (long) request.getAttribute("guestBookId");
 %>
+<portlet:renderURL var="searchURL">
+    <portlet:param name="mvcPath" value="/view_search.jsp"/>
+</portlet:renderURL>
 
+<aui:form action="${searchURL}">
+    <div class="row">
+        <div class="col-md-8">
+            <aui:input name="keywords" inlineLabel="left" size="192" placeholder="search-entries" label=""/>
+        </div>
+        <div class="col-md-4">
+            <aui:button type="submit" value="search"/>
+        </div>
+    </div>
+</aui:form>
 
 <aui:nav cssClass="nav-tabs">
 

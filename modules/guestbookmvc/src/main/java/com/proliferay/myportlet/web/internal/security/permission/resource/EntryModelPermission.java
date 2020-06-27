@@ -21,9 +21,6 @@ public class EntryModelPermission {
             PermissionChecker permissionChecker, long entryId, String actionId) throws PortalException {
 
 
-        System.out.println("acid = "+actionId);
-        System.out.println("entryid = "+entryId);
-        System.out.println("per = "+permissionChecker);
         return _entryModelResourcePermission.contains(permissionChecker, entryId, actionId);
     }
 

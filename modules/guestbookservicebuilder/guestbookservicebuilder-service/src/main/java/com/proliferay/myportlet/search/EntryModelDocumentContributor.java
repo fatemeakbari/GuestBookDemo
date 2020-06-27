@@ -17,7 +17,7 @@ import java.util.Locale;
 
 @Component(
         immediate = true,
-        property = "indexer.class.name=com.proliferay.myportlet.Entry",
+        property = "indexer.class.name=com.proliferay.myportlet.model.Entry",
         service = ModelDocumentContributor.class
 )
 public class EntryModelDocumentContributor

@@ -21,7 +21,7 @@ import java.util.Locale;
  * **/
 @Component(
         immediate = true,
-        property = "indexer.class.name=com.proliferay.myportlet.GuestBook",
+        property = "indexer.class.name=com.proliferay.myportlet.model.GuestBook",
         service = ModelDocumentContributor.class
 )
 public class GuestBookModelDocumentContributor
