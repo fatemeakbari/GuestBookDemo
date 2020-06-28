@@ -1,19 +1,4 @@
-<%--<%@ page import="com.liferay.portal.kernel.search.*" %>--%>
-<%--<%@ page import="com.liferay.portal.kernel.util.*" %>--%>
-<%--<%@ page import="com.liferay.portal.kernel.exception.PortalException" %>--%>
-<%--<%@ page import="com.liferay.portal.kernel.exception.SystemException" %>--%>
-<%--<%@ page import="jdk.nashorn.internal.runtime.ErrorManager" %>--%>
 
-<%--<%@ page import="java.util.*" %>--%>
-<%--<%@ page import="com.proliferay.myportlet.model.EntryModel" %>--%>
-<%--<%@ page import="com.liferay.portal.kernel.log.LogFactoryUtil" %>--%>
-<%--<%@ page import="com.liferay.portal.kernel.log.Log" %>&lt;%&ndash;--%>
-<%--  Created by IntelliJ IDEA.--%>
-<%--  User: fateme--%>
-<%--  Date: 6/25/20--%>
-<%--  Time: 5:56 PM--%>
-<%--  To change this template use File | Settings | File Templates.--%>
-<%--&ndash;%&gt;--%>
 <%@ include file="init.jsp"%>
 
 <%

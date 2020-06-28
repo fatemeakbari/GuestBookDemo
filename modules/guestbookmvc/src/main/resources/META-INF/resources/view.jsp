@@ -60,8 +60,6 @@
 
 </aui:nav>
 
-
-
 <aui:button-row cssClass="">
 
     <c:if test='<%= GuestBookPermission.contains(permissionChecker, scopeGroupId, "ADD_ENTRY") %>'>
