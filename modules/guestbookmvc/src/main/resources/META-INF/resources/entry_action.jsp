@@ -71,6 +71,7 @@
             test="<%=EntryModelPermission.contains(permissionChecker,entry.getEntryId(),ActionKeys.DELETE)%>">
 
         <portlet:actionURL name="deleteEntry" var="deleteURL">
+            <portlet:param name="action" value="deleteEntry"/>
             <portlet:param name="entryId"
                            value="<%= String.valueOf(entry.getEntryId()) %>" />
             <portlet:param name="guestBookId"

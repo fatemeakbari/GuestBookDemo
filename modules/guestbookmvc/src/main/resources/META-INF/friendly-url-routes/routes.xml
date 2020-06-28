@@ -4,7 +4,7 @@
 
 <routes>
     <route>
-        <pattern>/add-entry/{guestBookId}</pattern>
+        <pattern>/{instanceId}/add-entry/{guestBookId}</pattern>
         <generated-parameter name="guestBookId">{guestBookId}</generated-parameter>
         <implicit-parameter name="mvcPath">/edit_entry.jsp</implicit-parameter>
         <implicit-parameter name="p_p_lifecycle">0</implicit-parameter>
@@ -13,6 +13,26 @@
 
 
     </route>
+
+    <route>
+        <pattern>/{instanceId}/view</pattern>
+        <implicit-parameter name="mvcPath">/view.jsp</implicit-parameter>
+        <implicit-parameter name="p_p_lifecycle">0</implicit-parameter>
+        <implicit-parameter name="p_p_state">normal</implicit-parameter>
+        <implicit-parameter name="p_p_mode">view</implicit-parameter>
+
+
+    </route>
+
+<!--    <route>-->
+<!--        <pattern>/{instanceId}/delete</pattern>-->
+
+<!--        <implicit-parameter name="p_p_lifecycle">0</implicit-parameter>-->
+<!--        <implicit-parameter name="p_p_state">normal</implicit-parameter>-->
+<!--        <implicit-parameter name="p_p_mode">view</implicit-parameter>-->
+<!--        <implicit-parameter name="action">deleteEntry</implicit-parameter>-->
+
+<!--    </route>-->
 
 
 

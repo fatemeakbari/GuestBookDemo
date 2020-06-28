@@ -7,7 +7,6 @@ import org.osgi.service.component.annotations.Component;
 
 
 @Component(
-        immediate = true,
         property = {
                 "com.liferay.portlet.friendly-url-routes=META-INF/friendly-url-routes/routes.xml",
                 "javax.portlet.name=" + GuestBookMVCPortletKeys.GUESTBOOK
@@ -21,7 +20,7 @@ public class GuestBookFriendlyURLMapper extends DefaultFriendlyURLMapper {
             return _MAPPING;
         }
 
-        private static final String _MAPPING = "guestbook";
+        private static final String _MAPPING = "entry";
 
     }
 
