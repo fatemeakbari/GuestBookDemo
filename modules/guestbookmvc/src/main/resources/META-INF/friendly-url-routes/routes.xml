@@ -25,17 +25,27 @@
     </route>
 
 <!--    <route>-->
-<!--        <pattern>/{instanceId}/delete</pattern>-->
-
-<!--        <implicit-parameter name="p_p_lifecycle">0</implicit-parameter>-->
+<!--        <pattern>/delete</pattern>-->
+<!--        <generated-parameter name="guestBookId">{guestBookId}</generated-parameter>-->
+<!--        <generated-parameter name="entryId">{entryId}</generated-parameter>-->
+<!--        <implicit-parameter name="p_p_lifecycle">1</implicit-parameter>-->
 <!--        <implicit-parameter name="p_p_state">normal</implicit-parameter>-->
 <!--        <implicit-parameter name="p_p_mode">view</implicit-parameter>-->
-<!--        <implicit-parameter name="action">deleteEntry</implicit-parameter>-->
+<!--        <implicit-parameter name="javax.portlet.action">deleteEntry</implicit-parameter>-->
 
 <!--    </route>-->
 
 
+        <route>
+            <pattern>/delete</pattern>
+            <generated-parameter name="guestBookId">{guestBookId}</generated-parameter>
+            <generated-parameter name="entryId">{entryId}</generated-parameter>
+            <implicit-parameter name="p_p_lifecycle">1</implicit-parameter>
+            <implicit-parameter name="p_p_state">normal</implicit-parameter>
+            <implicit-parameter name="p_p_mode">view</implicit-parameter>
+            <implicit-parameter name="javax.portlet.action">deleteEntry</implicit-parameter>
 
+        </route>
 
 
 </routes>
