@@ -14,8 +14,7 @@
 
 package com.proliferay.myportlet.service.impl;
 
-import com.liferay.asset.kernel.model.AssetEntry;
-import com.liferay.asset.kernel.model.AssetLinkConstants;
+
 import com.liferay.portal.aop.AopService;
 
 import com.liferay.portal.kernel.exception.PortalException;
@@ -106,17 +105,17 @@ public class EntryLocalServiceImpl extends EntryLocalServiceBaseImpl {
 				true,
 				true);
 
-		AssetEntry assetEntry = assetEntryLocalService.updateEntry(userId,
-				groupId, entry.getCreateDate(), entry.getModifiedDate(),
-				Entry.class.getName(), entryId, entry.getUuid(), 0,
-				serviceContext.getAssetCategoryIds(),
-				serviceContext.getAssetTagNames(), true, true, null, null, null, null,
-				ContentTypes.TEXT_HTML, entry.getMessage(), null, null, null,
-				null, 0, 0, null);
-
-		assetLinkLocalService.updateLinks(userId, assetEntry.getEntryId(),
-				serviceContext.getAssetLinkEntryIds(),
-				AssetLinkConstants.TYPE_RELATED);
+//		AssetEntry assetEntry = assetEntryLocalService.updateEntry(userId,
+//				groupId, entry.getCreateDate(), entry.getModifiedDate(),
+//				Entry.class.getName(), entryId, entry.getUuid(), 0,
+//				serviceContext.getAssetCategoryIds(),
+//				serviceContext.getAssetTagNames(), true, true, null, null, null, null,
+//				ContentTypes.TEXT_HTML, entry.getMessage(), null, null, null,
+//				null, 0, 0, null);
+//
+//		assetLinkLocalService.updateLinks(userId, assetEntry.getEntryId(),
+//				serviceContext.getAssetLinkEntryIds(),
+//				AssetLinkConstants.TYPE_RELATED);
 		return entry;
 	}
 
@@ -151,17 +150,17 @@ public class EntryLocalServiceImpl extends EntryLocalServiceBaseImpl {
 				serviceContext.getModelPermissions()
 		);
 
-		AssetEntry assetEntry = assetEntryLocalService.updateEntry(userId,
-				entry.getGroupId(), entry.getCreateDate(), entry.getModifiedDate(),
-				Entry.class.getName(), entryId, entry.getUuid(), 0,
-				serviceContext.getAssetCategoryIds(),
-				serviceContext.getAssetTagNames(), true, true, null, null, null, null,
-				ContentTypes.TEXT_HTML, entry.getMessage(), null, null, null,
-				null, 0, 0, null);
+//		AssetEntry assetEntry = assetEntryLocalService.updateEntry(userId,
+//				entry.getGroupId(), entry.getCreateDate(), entry.getModifiedDate(),
+//				Entry.class.getName(), entryId, entry.getUuid(), 0,
+//				serviceContext.getAssetCategoryIds(),
+//				serviceContext.getAssetTagNames(), true, true, null, null, null, null,
+//				ContentTypes.TEXT_HTML, entry.getMessage(), null, null, null,
+//				null, 0, 0, null);
 
-		assetLinkLocalService.updateLinks(userId, assetEntry.getEntryId(),
-				serviceContext.getAssetLinkEntryIds(),
-				AssetLinkConstants.TYPE_RELATED);
+//		assetLinkLocalService.updateLinks(userId, assetEntry.getEntryId(),
+//				serviceContext.getAssetLinkEntryIds(),
+//				AssetLinkConstants.TYPE_RELATED);
 		return entry;
 	}
 
@@ -177,12 +176,6 @@ public class EntryLocalServiceImpl extends EntryLocalServiceBaseImpl {
 				ResourceConstants.SCOPE_INDIVIDUAL,
 				entryId);
 
-		AssetEntry assetEntry = assetEntryLocalService.fetchEntry(
-				Entry.class.getName(), entryId);
-
-		assetLinkLocalService.deleteLinks(assetEntry.getEntryId());
-
-		assetEntryLocalService.deleteEntry(assetEntry);
 
 		return deleteEntry(entry);
 	}

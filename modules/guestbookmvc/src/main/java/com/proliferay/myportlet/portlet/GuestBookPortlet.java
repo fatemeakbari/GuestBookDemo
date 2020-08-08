@@ -147,11 +147,10 @@ public class GuestBookPortlet extends MVCPortlet {
 		long entryId = ParamUtil.getLong(actionRequest,"entryId");
 		long guestBookId = ParamUtil.getLong(actionRequest,"guestBookId");
 
+    System.out.println("en id "+entryId+" "+guestBookId);
 		entryLocalService.deleteEntry(entryId);
 		actionResponse.setProperty("guestBookId", String.valueOf(guestBookId));
 		SessionMessages.add(actionRequest, "entryDeleted");
 
-		User user = null;
-		user.getFullName();
 	}
 }

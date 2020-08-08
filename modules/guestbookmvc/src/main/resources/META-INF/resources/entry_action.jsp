@@ -1,4 +1,6 @@
-<%@ page import="java.util.Map" %><%--
+<%@ page import="java.util.Map" %>
+<%@ page import="com.proliferay.myportlet.web.internal.security.permission.resource.EntryModelPermission" %>
+<%@ page import="com.proliferay.myportlet.model.Entry" %><%--
   Created by IntelliJ IDEA.
   User: fateme
   Date: 6/22/20
@@ -12,31 +14,6 @@
 
     Entry entry = (Entry)row.getObject();
 %>
-
-<%--<liferay-ui:icon-menu>--%>
-
-<%--    <portlet:renderURL var="editURL">--%>
-<%--        <portlet:param name="entryId"--%>
-<%--                       value="<%= String.valueOf(entry.getEntryId()) %>" />--%>
-<%--        <portlet:param name="mvcPath" value="/edit_entry.jsp" />--%>
-<%--    </portlet:renderURL>--%>
-
-<%--    <liferay-ui:icon image="edit" message="Edit"--%>
-<%--                     url="${editURL}" />--%>
-
-<%--    <portlet:actionURL name="deleteEntry" var="deleteURL">--%>
-<%--        <portlet:param name="entryId"--%>
-<%--                       value="<%= String.valueOf(entry.getEntryId()) %>" />--%>
-<%--        <portlet:param name="guestBookId"--%>
-<%--                       value="<%= String.valueOf(entry.getGuestBookId()) %>" />--%>
-<%--    </portlet:actionURL>--%>
-
-<%--    <liferay-ui:icon-delete image="delete" message="Delete" url="${deleteURL}" />--%>
-
-<%--</liferay-ui:icon-menu>--%>
-
-
-
 
 
 
@@ -71,6 +48,7 @@
             test="<%=EntryModelPermission.contains(permissionChecker,entry.getEntryId(),ActionKeys.DELETE)%>">
 
         <portlet:actionURL name="deleteEntry" var="deleteURL">
+
             <portlet:param name="entryId"
                            value="<%= String.valueOf(entry.getEntryId()) %>" />
             <portlet:param name="guestBookId"

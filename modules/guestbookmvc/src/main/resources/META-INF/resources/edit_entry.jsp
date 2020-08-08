@@ -1,4 +1,5 @@
-<%--
+<%@ page import="com.proliferay.myportlet.model.Entry" %>
+<%@ page import="com.proliferay.myportlet.service.EntryLocalServiceUtil" %><%--
   Created by IntelliJ IDEA.
   User: fateme
   Date: 6/12/20
@@ -16,13 +17,13 @@
 
 <portlet:actionURL name="addEntry" var="addEntryURL"/>
 <%
-  long entryId = ParamUtil.getLong(request,"entryId");
-  long guestBookId = ParamUtil.getLong(request,"guestBookId");
+    long entryId = ParamUtil.getLong(request,"entryId");
+    long guestBookId = ParamUtil.getLong(request,"guestBookId");
 
-  Entry entry = null;
-  if(entryId > 0){
-      entry = EntryLocalServiceUtil.getEntry(entryId);
-  }
+    Entry entry = null;
+    if(entryId > 0){
+        entry = EntryLocalServiceUtil.getEntry(entryId);
+    }
 %>
 
 
@@ -36,6 +37,14 @@
         <aui:input name="message" type="text"/>
         <aui:input name="entryId" type="hidden" />
         <aui:input name="guestBookId" type="hidden" value='<%= entry == null ? guestBookId : entry.getGuestBookId() %>'/>
+    </aui:fieldset>
+
+    <aui:fieldset>
+        <div class="clearfix">
+            <label class="control-label">Gender</label>
+            <clay:radio checked="<%= true %>" label="Male"  showLabel="<%= true %>" value="male" name="male"/>
+            <clay:radio checked="<%= true %>" label="Female" showLabel="<%= true %>" value="female" name="female"/>
+        </div>
     </aui:fieldset>
 
     <aui:button-row>

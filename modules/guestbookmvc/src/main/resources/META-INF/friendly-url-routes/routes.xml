@@ -31,13 +31,11 @@
         <implicit-parameter name="p_p_mode">view</implicit-parameter>
     </route>
 
-    <route>
-        <pattern>/entry/add</pattern>
-        <implicit-parameter name="p_p_lifecycle">1</implicit-parameter>
-        <implicit-parameter name="p_p_state">normal</implicit-parameter>
-        <implicit-parameter name="p_p_mode">view</implicit-parameter>
-        <implicit-parameter name="javax.portlet.action">addEntry</implicit-parameter>
-    </route>
+<!--    <route>-->
+<!--        <pattern>/entry/add</pattern>-->
+<!--        <implicit-parameter name="javax.portlet.action">addEntry</implicit-parameter>-->
+<!--        <implicit-parameter name="p_p_lifecycle">1</implicit-parameter>-->
+<!--    </route>-->
 
     <route>
         <pattern>/entry/delete/{guestBookId}/{entryId}</pattern>
@@ -57,29 +55,6 @@
         <implicit-parameter name="p_p_mode">view</implicit-parameter>
         <implicit-parameter name="mvcPath">/edit_entry.jsp</implicit-parameter>
     </route>
-
-
-
-
-
-
-
-
-
-
-<!--    <route>-->
-<!--        <pattern>/delete</pattern>-->
-<!--        <generated-parameter name="guestBookId">{guestBookId}</generated-parameter>-->
-<!--        <generated-parameter name="entryId">{entryId}</generated-parameter>-->
-<!--        <implicit-parameter name="p_p_lifecycle">1</implicit-parameter>-->
-<!--        <implicit-parameter name="p_p_state">normal</implicit-parameter>-->
-<!--        <implicit-parameter name="p_p_mode">view</implicit-parameter>-->
-<!--        <implicit-parameter name="javax.portlet.action">deleteEntry</implicit-parameter>-->
-
-<!--    </route>-->
-
-
-
 
 
 </routes>
