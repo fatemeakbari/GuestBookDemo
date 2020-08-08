@@ -14,6 +14,8 @@
 
 package com.proliferay.myportlet.service.impl;
 
+import com.liferay.asset.kernel.model.AssetEntry;
+import com.liferay.asset.kernel.model.AssetLinkConstants;
 import com.liferay.counter.kernel.service.CounterLocalService;
 import com.liferay.portal.aop.AopService;
 
@@ -24,6 +26,7 @@ import com.liferay.portal.kernel.search.Indexable;
 import com.liferay.portal.kernel.search.IndexableType;
 import com.liferay.portal.kernel.service.ServiceContext;
 import com.liferay.portal.kernel.service.UserLocalService;
+import com.liferay.portal.kernel.util.ContentTypes;
 import com.liferay.portal.kernel.util.OrderByComparator;
 import com.liferay.portal.kernel.util.Validator;
 import com.proliferay.myportlet.exception.GuestBookNameException;
@@ -98,6 +101,22 @@ public class GuestBookLocalServiceImpl extends GuestBookLocalServiceBaseImpl {
 				false,
 				true,
 				true);
+
+
+		//asset
+		AssetEntry assetEntry = assetEntryLocalService.updateEntry(userId,
+				groupId, guestBook.getCreateDate(),
+				guestBook.getModifiedDate(), GuestBook.class.getName(),
+				guestBookId, guestBook.getUuid(), 0,
+				serviceContext.getAssetCategoryIds(),
+				serviceContext.getAssetTagNames(), true, true, null, null, null, null,
+				ContentTypes.TEXT_HTML, guestBook.getName(), null, null, null,
+				null, 0, 0, null);
+
+
+		assetLinkLocalService.updateLinks(userId, assetEntry.getEntryId(),
+				serviceContext.getAssetLinkEntryIds(),
+				AssetLinkConstants.TYPE_RELATED);
 		return guestBook;
 
 	}
@@ -126,6 +145,20 @@ public class GuestBookLocalServiceImpl extends GuestBookLocalServiceBaseImpl {
 				guestBookId,
 				serviceContext.getModelPermissions()
 		);
+
+		AssetEntry assetEntry = assetEntryLocalService.updateEntry(guestBook.getUserId(),
+				guestBook.getGroupId(), guestBook.getCreateDate(),
+				guestBook.getModifiedDate(), GuestBook.class.getName(),
+				guestBookId, guestBook.getUuid(), 0,
+				serviceContext.getAssetCategoryIds(),
+				serviceContext.getAssetTagNames(), true, true, guestBook.getCreateDate(),
+				null, null, null, ContentTypes.TEXT_HTML, guestBook.getName(), null, null,
+				null, null, 0, 0, serviceContext.getAssetPriority());
+
+		assetLinkLocalService.updateLinks(serviceContext.getUserId(),
+				assetEntry.getEntryId(), serviceContext.getAssetLinkEntryIds(),
+				AssetLinkConstants.TYPE_RELATED);
+
 		return guestBook;
 
 	}
@@ -146,6 +179,13 @@ public class GuestBookLocalServiceImpl extends GuestBookLocalServiceBaseImpl {
 				GuestBook.class.getName(),
 				ResourceConstants.SCOPE_INDIVIDUAL,
 				guestBookId);
+
+		AssetEntry assetEntry = assetEntryLocalService.fetchEntry(
+				GuestBook.class.getName(), guestBookId);
+
+		assetLinkLocalService.deleteLinks(assetEntry.getEntryId());
+
+		assetEntryLocalService.deleteEntry(assetEntry);
 
 		return guestBook;
 	}

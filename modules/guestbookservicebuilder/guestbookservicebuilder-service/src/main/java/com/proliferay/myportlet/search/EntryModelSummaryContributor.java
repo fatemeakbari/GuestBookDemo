@@ -1,6 +1,8 @@
 package com.proliferay.myportlet.search;
 
 import com.liferay.petra.string.StringPool;
+import com.liferay.portal.kernel.log.Log;
+import com.liferay.portal.kernel.log.LogFactoryUtil;
 import com.liferay.portal.kernel.search.Document;
 import com.liferay.portal.kernel.search.Field;
 import com.liferay.portal.kernel.search.Summary;
@@ -33,7 +35,12 @@ public class EntryModelSummaryContributor implements ModelSummaryContributor {
         String title = document.get(prefix + Field.TITLE, Field.CONTENT);
         String content = document.get(prefix + Field.CONTENT, Field.CONTENT);
 
+        _log.info("entry summary title "+title);
+        _log.info("entry summary content "+content);
         return new Summary(title, content);
     }
+
+    private static final Log _log = LogFactoryUtil.getLog(
+            EntryModelSummaryContributor.class);
 
 }

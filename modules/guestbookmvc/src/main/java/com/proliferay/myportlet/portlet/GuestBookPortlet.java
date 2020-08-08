@@ -1,6 +1,7 @@
 package com.proliferay.myportlet.portlet;
 
 import com.liferay.portal.kernel.exception.PortalException;
+import com.liferay.portal.kernel.model.User;
 import com.liferay.portal.kernel.service.ServiceContext;
 import com.liferay.portal.kernel.service.ServiceContextFactory;
 import com.liferay.portal.kernel.servlet.SessionErrors;
@@ -30,7 +31,7 @@ import java.util.List;
 	property = {
 		"com.liferay.portlet.display-category=category.social",
 		"com.liferay.portlet.header-portlet-css=/css/main.css",
-		"com.liferay.portlet.instanceable=true",
+		"com.liferay.portlet.instanceable=false",
 		"javax.portlet.display-name=GuestBookMVC",
 		"javax.portlet.init-param.template-path=/",
 		"javax.portlet.init-param.view-template=/view.jsp",
@@ -150,5 +151,7 @@ public class GuestBookPortlet extends MVCPortlet {
 		actionResponse.setProperty("guestBookId", String.valueOf(guestBookId));
 		SessionMessages.add(actionRequest, "entryDeleted");
 
+		User user = null;
+		user.getFullName();
 	}
 }

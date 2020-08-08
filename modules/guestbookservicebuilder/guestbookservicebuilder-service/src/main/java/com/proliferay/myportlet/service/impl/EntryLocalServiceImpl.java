@@ -14,6 +14,8 @@
 
 package com.proliferay.myportlet.service.impl;
 
+import com.liferay.asset.kernel.model.AssetEntry;
+import com.liferay.asset.kernel.model.AssetLinkConstants;
 import com.liferay.portal.aop.AopService;
 
 import com.liferay.portal.kernel.exception.PortalException;
@@ -23,6 +25,7 @@ import com.liferay.portal.kernel.model.User;
 import com.liferay.portal.kernel.search.Indexable;
 import com.liferay.portal.kernel.search.IndexableType;
 import com.liferay.portal.kernel.service.ServiceContext;
+import com.liferay.portal.kernel.util.ContentTypes;
 import com.liferay.portal.kernel.util.OrderByComparator;
 import com.liferay.portal.kernel.util.Validator;
 import com.proliferay.myportlet.exception.EntryEmailException;
@@ -102,6 +105,18 @@ public class EntryLocalServiceImpl extends EntryLocalServiceBaseImpl {
 				false,
 				true,
 				true);
+
+		AssetEntry assetEntry = assetEntryLocalService.updateEntry(userId,
+				groupId, entry.getCreateDate(), entry.getModifiedDate(),
+				Entry.class.getName(), entryId, entry.getUuid(), 0,
+				serviceContext.getAssetCategoryIds(),
+				serviceContext.getAssetTagNames(), true, true, null, null, null, null,
+				ContentTypes.TEXT_HTML, entry.getMessage(), null, null, null,
+				null, 0, 0, null);
+
+		assetLinkLocalService.updateLinks(userId, assetEntry.getEntryId(),
+				serviceContext.getAssetLinkEntryIds(),
+				AssetLinkConstants.TYPE_RELATED);
 		return entry;
 	}
 
@@ -135,6 +150,18 @@ public class EntryLocalServiceImpl extends EntryLocalServiceBaseImpl {
 				entryId,
 				serviceContext.getModelPermissions()
 		);
+
+		AssetEntry assetEntry = assetEntryLocalService.updateEntry(userId,
+				entry.getGroupId(), entry.getCreateDate(), entry.getModifiedDate(),
+				Entry.class.getName(), entryId, entry.getUuid(), 0,
+				serviceContext.getAssetCategoryIds(),
+				serviceContext.getAssetTagNames(), true, true, null, null, null, null,
+				ContentTypes.TEXT_HTML, entry.getMessage(), null, null, null,
+				null, 0, 0, null);
+
+		assetLinkLocalService.updateLinks(userId, assetEntry.getEntryId(),
+				serviceContext.getAssetLinkEntryIds(),
+				AssetLinkConstants.TYPE_RELATED);
 		return entry;
 	}
 
@@ -149,6 +176,14 @@ public class EntryLocalServiceImpl extends EntryLocalServiceBaseImpl {
 				Entry.class.getName(),
 				ResourceConstants.SCOPE_INDIVIDUAL,
 				entryId);
+
+		AssetEntry assetEntry = assetEntryLocalService.fetchEntry(
+				Entry.class.getName(), entryId);
+
+		assetLinkLocalService.deleteLinks(assetEntry.getEntryId());
+
+		assetEntryLocalService.deleteEntry(assetEntry);
+
 		return deleteEntry(entry);
 	}
 

@@ -1,0 +1,85 @@
+<?xml version="1.0"?>
+<!DOCTYPE routes PUBLIC
+        "-//Liferay//DTD Friendly URL Routes 7.1.0//EN" "http://www.liferay.com/dtd/liferay-friendly-url-routes_7_1_0.dtd">
+
+<routes>
+
+    <route>
+        <pattern>/view</pattern>
+        <implicit-parameter name="mvcPath">/view.jsp</implicit-parameter>
+        <implicit-parameter name="p_p_lifecycle">0</implicit-parameter>
+        <implicit-parameter name="p_p_state">normal</implicit-parameter>
+        <implicit-parameter name="p_p_mode">view</implicit-parameter>
+    </route>
+
+    <route>
+        <pattern>/search</pattern>
+        <implicit-parameter name="mvcPath">/view_search.jsp</implicit-parameter>
+        <implicit-parameter name="p_p_lifecycle">0</implicit-parameter>
+        <implicit-parameter name="p_p_state">normal</implicit-parameter>
+        <implicit-parameter name="p_p_mode">view</implicit-parameter>
+    </route>
+
+
+
+    <route>
+        <pattern>/entry/{guestBookId}</pattern>
+        <generated-parameter name="guestBookId">{guestBookId}</generated-parameter>
+        <implicit-parameter name="mvcPath">/edit_entry.jsp</implicit-parameter>
+        <implicit-parameter name="p_p_lifecycle">0</implicit-parameter>
+        <implicit-parameter name="p_p_state">normal</implicit-parameter>
+        <implicit-parameter name="p_p_mode">view</implicit-parameter>
+    </route>
+
+    <route>
+        <pattern>/entry/add</pattern>
+        <implicit-parameter name="p_p_lifecycle">1</implicit-parameter>
+        <implicit-parameter name="p_p_state">normal</implicit-parameter>
+        <implicit-parameter name="p_p_mode">view</implicit-parameter>
+        <implicit-parameter name="javax.portlet.action">addEntry</implicit-parameter>
+    </route>
+
+    <route>
+        <pattern>/entry/delete/{guestBookId}/{entryId}</pattern>
+        <generated-parameter name="guestBookId">{guestBookId}</generated-parameter>
+        <generated-parameter name="entryId">{entryId}</generated-parameter>
+        <implicit-parameter name="p_p_lifecycle">1</implicit-parameter>
+        <implicit-parameter name="p_p_state">normal</implicit-parameter>
+        <implicit-parameter name="p_p_mode">view</implicit-parameter>
+        <implicit-parameter name="javax.portlet.action">deleteEntry</implicit-parameter>
+    </route>
+
+    <route>
+        <pattern>/entry/edit/{entryId}</pattern>
+        <generated-parameter name="entryId">{entryId}</generated-parameter>
+        <implicit-parameter name="p_p_lifecycle">0</implicit-parameter>
+        <implicit-parameter name="p_p_state">normal</implicit-parameter>
+        <implicit-parameter name="p_p_mode">view</implicit-parameter>
+        <implicit-parameter name="mvcPath">/edit_entry.jsp</implicit-parameter>
+    </route>
+
+
+
+
+
+
+
+
+
+
+<!--    <route>-->
+<!--        <pattern>/delete</pattern>-->
+<!--        <generated-parameter name="guestBookId">{guestBookId}</generated-parameter>-->
+<!--        <generated-parameter name="entryId">{entryId}</generated-parameter>-->
+<!--        <implicit-parameter name="p_p_lifecycle">1</implicit-parameter>-->
+<!--        <implicit-parameter name="p_p_state">normal</implicit-parameter>-->
+<!--        <implicit-parameter name="p_p_mode">view</implicit-parameter>-->
+<!--        <implicit-parameter name="javax.portlet.action">deleteEntry</implicit-parameter>-->
+
+<!--    </route>-->
+
+
+
+
+
+</routes>

@@ -6,8 +6,11 @@
 <liferay-ui:success key="entryUpdated" message="entry-updated"/>
 <liferay-ui:success key="entryDeleted" message="entry-deleted"/>
 <%
-    long guestBookId = (long) request.getAttribute("guestBookId");
+    long guestBookId = (long) renderRequest.getAttribute("guestBookId");
+
 %>
+
+
 <portlet:renderURL var="searchURL">
     <portlet:param name="mvcPath" value="/view_search.jsp"/>
 </portlet:renderURL>
@@ -60,8 +63,6 @@
 
 </aui:nav>
 
-
-
 <aui:button-row cssClass="">
 
     <c:if test='<%= GuestBookPermission.contains(permissionChecker, scopeGroupId, "ADD_ENTRY") %>'>
@@ -96,4 +97,3 @@
     <liferay-ui:search-iterator />
 
 </liferay-ui:search-container>
-

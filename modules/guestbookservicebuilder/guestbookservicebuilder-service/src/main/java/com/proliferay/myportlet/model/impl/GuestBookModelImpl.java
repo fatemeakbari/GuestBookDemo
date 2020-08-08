@@ -125,9 +125,11 @@ public class GuestBookModelImpl
 
 	public static final long GROUPID_COLUMN_BITMASK = 2L;
 
-	public static final long UUID_COLUMN_BITMASK = 4L;
+	public static final long STATUS_COLUMN_BITMASK = 4L;
 
-	public static final long GUESTBOOKID_COLUMN_BITMASK = 8L;
+	public static final long UUID_COLUMN_BITMASK = 8L;
+
+	public static final long GUESTBOOKID_COLUMN_BITMASK = 16L;
 
 	public static void setEntityCacheEnabled(boolean entityCacheEnabled) {
 		_entityCacheEnabled = entityCacheEnabled;
@@ -436,7 +438,19 @@ public class GuestBookModelImpl
 
 	@Override
 	public void setStatus(int status) {
+		_columnBitmask |= STATUS_COLUMN_BITMASK;
+
+		if (!_setOriginalStatus) {
+			_setOriginalStatus = true;
+
+			_originalStatus = _status;
+		}
+
 		_status = status;
+	}
+
+	public int getOriginalStatus() {
+		return _originalStatus;
 	}
 
 	@JSON
@@ -806,6 +820,10 @@ public class GuestBookModelImpl
 
 		guestBookModelImpl._setOriginalGroupId = false;
 
+		guestBookModelImpl._originalStatus = guestBookModelImpl._status;
+
+		guestBookModelImpl._setOriginalStatus = false;
+
 		guestBookModelImpl._originalCompanyId = guestBookModelImpl._companyId;
 
 		guestBookModelImpl._setOriginalCompanyId = false;
@@ -973,6 +991,8 @@ public class GuestBookModelImpl
 	private long _originalGroupId;
 	private boolean _setOriginalGroupId;
 	private int _status;
+	private int _originalStatus;
+	private boolean _setOriginalStatus;
 	private long _statusByUserId;
 	private String _statusByUserName;
 	private Date _statusDate;

@@ -33,12 +33,14 @@ public class GuestBookModelDocumentContributor
             document.addDate(Field.MODIFIED_DATE, guestBook.getModifiedDate());
 
             Locale defaultLocale = PortalUtil.getSiteDefaultLocale(
-                    guestBook.getGroupId());
+                    guestBook.getCompanyId());
 
             String localizedTitle = LocalizationUtil.getLocalizedName(
                     Field.TITLE, defaultLocale.toString());
 
             document.addText(localizedTitle, guestBook.getName());
+
+            _log.info("index new guestbook "+guestBook.getGroupId());
         } catch (PortalException pe) {
             if (_log.isWarnEnabled()) {
                 _log.warn(

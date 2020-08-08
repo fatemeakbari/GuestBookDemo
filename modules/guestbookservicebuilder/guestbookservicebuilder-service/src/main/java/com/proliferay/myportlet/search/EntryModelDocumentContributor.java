@@ -51,6 +51,9 @@ public class EntryModelDocumentContributor
                     Field.NAME, defaultLocale.toString());
 
             document.addText(localizedGbName, guestBookName);
+
+            _log.info("index new entry  "+entry.getEntryId());
+
         } catch (PortalException pe) {
             if (_log.isWarnEnabled()) {
                 _log.warn("Unable to index entry " + entry.getEntryId(), pe);

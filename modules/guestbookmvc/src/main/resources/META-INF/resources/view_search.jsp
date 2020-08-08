@@ -20,7 +20,7 @@
     long guestBookId = ParamUtil.getLong(request,"guestBookId");
     String keywords = ParamUtil.getString(request,"keywords");
 %>
-
+<h1>view search</h1>
 <portlet:renderURL var="searchURL">
     <portlet:param name="mvcPath" value="/view_search.jsp"/>
 </portlet:renderURL>
@@ -111,3 +111,4 @@
     <liferay-ui:search-iterator />
 </liferay-ui:search-container>
 
+len of hints <%=hits.getDocs().length%>

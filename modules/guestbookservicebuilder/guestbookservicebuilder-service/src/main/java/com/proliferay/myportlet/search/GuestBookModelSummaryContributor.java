@@ -1,6 +1,8 @@
 package com.proliferay.myportlet.search;
 
 import com.liferay.petra.string.StringPool;
+import com.liferay.portal.kernel.log.Log;
+import com.liferay.portal.kernel.log.LogFactoryUtil;
 import com.liferay.portal.kernel.search.Document;
 import com.liferay.portal.kernel.search.Field;
 import com.liferay.portal.kernel.search.Summary;
@@ -31,6 +33,10 @@ public class GuestBookModelSummaryContributor implements ModelSummaryContributor
 
         String title = document.get(prefix + Field.TITLE, Field.TITLE);
 
+        _log.info("guestbook summary title "+ title);
         return new Summary(title, StringPool.BLANK);
     }
+
+    private static final Log _log = LogFactoryUtil.getLog(
+            GuestBookModelSummaryContributor.class);
 }
